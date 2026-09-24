@@ -51,8 +51,34 @@ Submitted date:   ${new Intl.DateTimeFormat('en-US', {
 }).format(new Date())}
 `.trim();
 
+  if (process.env.RESEND_API_KEY) {
+    console.log('Attempting to send lead email through Resend to:', leadToEmail);
+
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: leadFromEmail,
+        to: [leadToEmail],
+        subject: `New lead: ${body.firstName} ${body.lastName} — $${body.loanAmount}`,
+        text: summary
+      })
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`Resend API ${response.status}: ${errorBody}`);
+    }
+
+    console.log('Lead email sent successfully through Resend for:', body.email);
+    return { skipped: false };
+  }
+
   if (!smtpHost || !smtpUser || !smtpPass || !leadToEmail) {
-    console.error('SMTP email configuration is missing. Add SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, LEAD_TO_EMAIL, and LEAD_FROM_EMAIL.');
+    console.error('Email configuration is missing. Add RESEND_API_KEY, LEAD_TO_EMAIL, and LEAD_FROM_EMAIL.');
     throw new Error('Email configuration is missing');
   }
 
