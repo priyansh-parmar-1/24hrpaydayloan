@@ -79,13 +79,7 @@ Submitted date:   ${new Intl.DateTimeFormat('en-US', {
 
   if (!smtpHost || !smtpUser || !smtpPass || !leadToEmail) {
     console.error('Email configuration is missing. Add RESEND_API_KEY, LEAD_TO_EMAIL, and LEAD_FROM_EMAIL, or configure SMTP variables.');
-    console.log('Lead preview:', {
-      name: `${body.firstName} ${body.lastName}`,
-      email: body.email,
-      amount: body.loanAmount,
-      phone: body.phone
-    });
-    return { skipped: true };
+    throw new Error('Email configuration is missing');
   }
 
   console.log('Attempting to send lead email through SMTP to:', leadToEmail);
