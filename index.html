@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>24hrPaydayLoan — Short-Term Cash, Fast</title>
+<meta name="description" content="Request a short-term loan online and get connected with a lender. Simple form, fast decision.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="logo">24hr<span>PaydayLoan</span></a>
+    <nav>
+      <ul>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <a href="#apply" class="header-cta">Get started</a>
+  </div>
+</header>
+
+<section class="hero" id="apply">
+  <div class="wrap">
+    <div>
+      <h1>Need cash before your next paycheck?</h1>
+      <p class="lede">Tell us how much you need. We'll match your request with an independent lender and you could see funds by the next business day.</p>
+
+      <form class="amount-form" id="leadForm">
+        <div id="step-amount">
+          <h3>How much do you need?</h3>
+          <div class="amount-grid" id="amountGrid">
+            <button type="button" class="amount-btn" data-amount="100">$100</button>
+            <button type="button" class="amount-btn" data-amount="200">$200</button>
+            <button type="button" class="amount-btn" data-amount="300">$300</button>
+            <button type="button" class="amount-btn" data-amount="500">$500</button>
+            <button type="button" class="amount-btn" data-amount="700">$700</button>
+            <button type="button" class="amount-btn" data-amount="1000">$1,000</button>
+            <button type="button" class="amount-btn" data-amount="1500">$1,500</button>
+            <button type="button" class="amount-btn" data-amount="2000">$2,000</button>
+          </div>
+        </div>
+
+        <div class="email-step" id="step-email">
+          <h3>Where should we send your offer?</h3>
+          <input type="email" id="emailInput" name="email" placeholder="Email address" required>
+          <div class="error" id="emailError">Enter a valid email address.</div>
+          <button type="submit" class="submit-btn">Continue</button>
+          <span class="back-link" id="backLink">← Choose a different amount</span>
+        </div>
+      </form>
+    </div>
+
+    <div class="clock-arc">
+      <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#e2ddd0" stroke-width="14"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#d9a62e" stroke-width="14"
+                stroke-dasharray="552" stroke-dashoffset="138" stroke-linecap="round"
+                transform="rotate(-90 100 100)"/>
+      </svg>
+      <div class="arc-label">
+        <span class="num">24</span>
+        <span class="unit">HOUR DECISION</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="wrap">
+    <div class="trust-item">
+      <h4>One simple form</h4>
+      <p>A few minutes to fill out, from your phone or computer.</p>
+    </div>
+    <div class="trust-item">
+      <h4>Fast response</h4>
+      <p>No long waiting periods for a decision from a lender.</p>
+    </div>
+    <div class="trust-item">
+      <h4>Funds when you need them</h4>
+      <p>Approved funds can arrive as soon as the next business day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="content-block">
+  <div class="wrap">
+    <div>
+      <h2>We connect you with lenders — we're not the lender.</h2>
+      <p>24hrPaydayLoan is a referral service. When you submit a request, we share it with independent, participating lenders who may be able to offer you a short-term loan. You review any offer and decide whether to accept it — there's no obligation.</p>
+    </div>
+    <div>
+      <h2>Built for people who need cash now.</h2>
+      <p>Car trouble, a medical bill, a bill that landed at the wrong time — short-term loans exist to bridge the gap until your next paycheck. We keep the request process short so you're not stuck filling out paperwork when you're already stretched thin.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-strip">
+  <div class="wrap">
+    <div>
+      <h3>Who can apply?</h3>
+      <p>Most lenders in our network look for applicants who are 18 or older, have a checking account with direct deposit, and receive regular income. Exact requirements vary by lender.</p>
+    </div>
+    <div>
+      <h3>What does it cost?</h3>
+      <p>We don't charge you anything to use this service. Any fees or interest come from the lender you're matched with, and will be disclosed to you before you agree to anything.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="legal-name">24hrPaydayLoan</p>
+    <p>24hrPaydayLoan is not a lender and does not make loans or credit decisions. We are an advertising referral service that connects consumers with independent, third-party lenders. Loan terms, APR, and fees are set entirely by the lender you're matched with — review them carefully before accepting any offer. This is not an offer or guarantee of a loan. Availability varies by state.</p>
+    <p class="fine-print">© 2026 24hrPaydayLoan. All rights reserved. · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

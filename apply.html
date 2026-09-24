@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Your Request — 24hrPaydayLoan</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="logo">24hr<span>PaydayLoan</span></a>
+    <nav></nav>
+    <span></span>
+  </div>
+</header>
+
+<section class="apply-section">
+  <div class="wrap">
+    <div class="apply-header">
+      <h1>Almost there</h1>
+      <p>A few more details so we can match you with a lender. This information is shared only with participating lenders in our network.</p>
+    </div>
+
+    <div class="apply-card">
+      <div class="status-msg" id="statusMsg"></div>
+
+      <div class="modal hidden" id="submitModal" aria-live="polite" aria-modal="true" role="dialog">
+        <div class="modal-box">
+          <h3 id="modalTitle">Request submitted</h3>
+          <p id="modalMessage">Your details have been submitted successfully.</p>
+          <button type="button" class="submit-btn modal-btn" id="modalOkBtn">OK</button>
+        </div>
+      </div>
+       <form id="applyForm">
+        <!-- honeypot -->
+        <input type="text" name="company" class="honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="section-label">Loan request</div>
+        <div class="field-row">
+          <div class="field">
+            <label for="loanAmount">Amount requested</label>
+            <select id="loanAmount" name="loanAmount" required>
+              <option value="100">$100</option>
+              <option value="200">$200</option>
+              <option value="300">$300</option>
+              <option value="500">$500</option>
+              <option value="700">$700</option>
+              <option value="1000">$1,000</option>
+              <option value="1500">$1,500</option>
+              <option value="2000">$2,000</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required>
+            <div class="field-error">Enter a valid email.</div>
+          </div>
+        </div>
+
+        <div class="section-label">About you</div>
+        <div class="field-row">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" autocomplete="street-address" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" required>
+          </div>
+          <div class="field">
+            <label for="zip">ZIP code</label>
+            <input type="tel" id="zip" name="zip" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" autocomplete="postal-code" required>
+          </div>
+        </div>
+
+        <div class="section-label">Income</div>
+        <div class="field-row">
+          <div class="field">
+            <label for="employment">Employment status</label>
+            <select id="employment" name="employment" required>
+              <option value="employed">Employed</option>
+              <option value="self-employed">Self-employed</option>
+              <option value="benefits">Receiving benefits</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="monthlyIncome">Monthly income (approx.)</label>
+            <input type="number" id="monthlyIncome" name="monthlyIncome" inputmode="numeric" required>
+          </div>
+        </div>
+
+        <p class="consent">By submitting, you agree that 24hrPaydayLoan may share this information with participating lenders and marketing partners so they can contact you about your request. You are under no obligation to accept any loan offer. See our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Submit request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="legal-name">24hrPaydayLoan</p>
+    <p>24hrPaydayLoan is not a lender and does not make loans or credit decisions. We are an advertising referral service that connects consumers with independent, third-party lenders.</p>
+  </div>
+</footer>
+
+<script src="apply.js"></script>
+</body>
+</html>
