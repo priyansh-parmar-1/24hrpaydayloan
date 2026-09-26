@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 const REQUIRED_FIELDS = [
   'loanAmount', 'email', 'firstName', 'lastName', 'phone',
-  'address', 'zip', 'employment', 'monthlyIncome'
+  'address', 'zip', 'employment', 'monthlyIncome', 'bankName'
 ];
 
 function isValidEmail(v) {
@@ -42,6 +42,7 @@ Address:          ${body.address}
 ZIP:              ${body.zip}
 Employment:       ${body.employment}
 Monthly income:   ${body.monthlyIncome}
+Bank name:        ${body.bankName}
 
 Submitted date:   ${new Intl.DateTimeFormat('en-US', {
   timeZone: 'America/New_York',
