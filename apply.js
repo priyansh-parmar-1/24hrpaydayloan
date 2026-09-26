@@ -34,35 +34,40 @@ document.addEventListener('DOMContentLoaded', function () {
         zipInput.value = zipInput.value.replace(/\D/g, '').slice(0, 5);
     });
 
+    var monthlyIncomeInput = document.getElementById('monthlyIncome');
+    monthlyIncomeInput.addEventListener('input', function () {
+        monthlyIncomeInput.value = monthlyIncomeInput.value.replace(/\D/g, '');
+    });
+
     function validate(data) {
 
-        var errors = [];
+        var errors = {};
 
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-            errors.push(['email', 'Enter a valid email.']);
+        form.querySelectorAll('[required]').forEach(function (field) {
+            if (!String(data[field.name] || '').trim()) {
+                errors[field.id] = 'Required.';
+            }
+        });
+
+        if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+            errors.email = 'Enter a valid email.';
         }
 
-        if (!/^\d{5}$/.test(data.zip)) {
-            errors.push(['zip', 'Enter a 5-digit ZIP.']);
+        if (data.zip && !/^\d{5}$/.test(data.zip)) {
+            errors.zip = 'Enter a 5-digit ZIP.';
         }
 
-        if (!data.address || !data.address.trim()) {
-            errors.push(['address', 'Required.']);
+        if (data.phone && !/^\d{10}$/.test(data.phone)) {
+            errors.phone = 'Enter exactly 10 digits.';
         }
 
-        if (!data.firstName.trim()) {
-            errors.push(['firstName', 'Required.']);
+        if (data.monthlyIncome && !/^\d+$/.test(data.monthlyIncome)) {
+            errors.monthlyIncome = 'Enter numbers only.';
         }
 
-        if (!data.lastName.trim()) {
-            errors.push(['lastName', 'Required.']);
-        }
-
-        if (!/^\d{10}$/.test(data.phone)) {
-            errors.push(['phone', 'Enter exactly 10 digits.']);
-        }
-
-        return errors;
+        return Object.keys(errors).map(function (fieldId) {
+            return [fieldId, errors[fieldId]];
+        });
     }
 
     function showModal(title, message, redirectToHome) {
@@ -114,6 +119,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log("Validation failed");
 
+        form.querySelectorAll('.field-error').forEach(function (errorElement) {
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        });
+
+        form.querySelectorAll('[aria-invalid="true"]').forEach(function (field) {
+            field.removeAttribute('aria-invalid');
+            field.removeAttribute('aria-describedby');
+            field.style.borderColor = '';
+        });
+
         errors.forEach(function (err) {
 
             var field = document.getElementById(err[0]);
@@ -123,17 +139,35 @@ document.addEventListener('DOMContentLoaded', function () {
                 var errEl =
                     field.parentElement.querySelector('.field-error');
 
-                field.style.borderColor = '#c1443c';
-
-                if (errEl) {
-                    errEl.textContent = err[1];
-                    errEl.style.display = 'block';
+                if (!errEl) {
+                    errEl = document.createElement('div');
+                    errEl.className = 'field-error';
+                    field.insertAdjacentElement('afterend', errEl);
                 }
+
+                field.style.borderColor = '#c1443c';
+                field.setAttribute('aria-invalid', 'true');
+                field.setAttribute('aria-describedby', errEl.id || field.id + 'Error');
+                errEl.id = field.id + 'Error';
+
+                errEl.textContent = err[1];
+                errEl.style.display = 'block';
             }
         });
 
         return;
     }
+
+    form.querySelectorAll('.field-error').forEach(function (errorElement) {
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
+    });
+
+    form.querySelectorAll('[aria-invalid="true"]').forEach(function (field) {
+        field.removeAttribute('aria-invalid');
+        field.removeAttribute('aria-describedby');
+        field.style.borderColor = '';
+    });
 
     console.log("Validation passed");
 
